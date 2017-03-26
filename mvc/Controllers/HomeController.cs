@@ -1,8 +1,10 @@
-﻿using System;
+﻿using mvc.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace mvc.Controllers
 {
@@ -10,10 +12,14 @@ namespace mvc.Controllers
     {
         public ActionResult Index()
         {
-            Models.Class1 class1 = new Models.Class1();
+            Class1 class1 = new Class1();
             class1.Prop1 = "prop1";
-            var type = Models.DbName.ReadTable(class1);
-            Models.DbName.ReadFields(class1);
+            var type = DbName.ReadTableName(class1);
+            List<PropertyInfo> list = DbName.ReadFieldsInfo(class1);
+
+            List<Class1> l = Class1.GetList();
+
+
             return View();
         }
 
